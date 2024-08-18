@@ -5,7 +5,7 @@ Usage:
 2. Use idb_get_value() to read the value of a key in a group
 
 Note:
-The return value of idb_get_value() is a pointer to a stack memory region. Remember to clean it after use
+The return value of idb_get_value() is a pointer to a stack memory region. Remember to clean it after use.
 
 Example:
 - File config.ini:
