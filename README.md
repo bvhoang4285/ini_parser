@@ -22,11 +22,12 @@ option 2 = 100
 
 void main()
 {
-  idb_data inidb;
   char* pval;
-  idb_from_file(&inidb, "./config.ini");
-  pval= idb_get_value(&inidb, "SETTINGS", "option 1");
+  idb_data inidb;
 
+  idb_from_file(&inidb, "./config.ini");
+
+  pval= idb_get_value(&inidb, "SETTINGS", "option 1");
   if(pval)
   {
     printf("option 1 value is: %s\n", pval);
