@@ -1,6 +1,6 @@
 ## Fast and simple INI database file parser C library
 
-Usage:
+### Usage:
 1. Use idb_from_file() to parse ini file and store in idb_data structure
 2. Use idb_get_value() to read the value of a key in a group
 
