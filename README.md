@@ -12,7 +12,7 @@ Example:
 ```ini
 [SETTINGS]
 option 1 = yes
-option 2 = no
+option 2 = 100
 ```
 
 - File main.c:
