@@ -9,7 +9,7 @@ The return value of idb_get_value() is a pointer to a stack memory region. Remem
 
 Example:
 - File config.ini:
-```
+```ini
 [SETTINGS]
 option 1 = yes
 option 2 = no
