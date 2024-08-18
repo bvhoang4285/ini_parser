@@ -8,8 +8,8 @@ Note:
 The return value of idb_get_value() is a pointer to a stack memory region. Remember to clean it after use
 
 Example:
-```
 - File config.ini:
+```
 [SETTINGS]
 option 1 = yes
 option 2 = no
