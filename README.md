@@ -4,9 +4,6 @@
 1. Use idb_from_file() to parse ini file and store in idb_data structure
 2. Use idb_get_value() to read the value of a key in a group
 
-Note:
-The return value of idb_get_value() is a pointer to a stack memory region. Remember to clean it after use.
-
 ### Example:
 - File config.ini:
 ```ini
@@ -16,7 +13,7 @@ option 2 = 100
 ```
 
 - File main.c:
-```ruby
+```c
 #include <stdio.h>
 #include "ini_parser.h"
 
@@ -25,13 +22,19 @@ void main()
   char* pval;
   idb_data inidb;
 
+  idb_init(&inidb, 0);
   idb_from_file(&inidb, "./config.ini");
 
   pval= idb_get_value(&inidb, "SETTINGS", "option 1");
   if(pval)
   {
     printf("option 1 value is: %s\n", pval);
-    free(pval);
+  }
+
+  pval= idb_get_value(&inidb, "SETTINGS", "option 2");
+  if(pval)
+  {
+    printf("option 2 value is: %s\n", atoi(pval));
   }
 }
 ```
