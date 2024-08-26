@@ -1,8 +1,9 @@
 ## Fast and simple INI file parser library in C language
 
 ### Usage:
-1. Use idb_from_file() to parse ini file and store in idb_data structure
-2. Use idb_get_value() to read the value of a key in a group
+1. Use idb_init() to initialize the database structure
+2. Use idb_from_file() to parse ini file and store in idb_data structure
+3. Use idb_get_value() to read the value of a key in a group
 
 ### Example:
 - File config.ini:
