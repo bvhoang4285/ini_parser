@@ -26,5 +26,7 @@ typedef struct __idb_data_
 
 extern void idb_from_file(idb_data* pdb, char* path);
 extern char* idb_get_value(idb_data* pdb, char* group, char* name);
+extern void idb_reset(idb_data *pdb);
+extern void idb_init(idb_data *pdb, unsigned int n_grp);
 
 #endif // __INI_PARSER_H_
