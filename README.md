@@ -16,6 +16,7 @@ option 2 = 100
 - File main.c:
 ```c
 #include <stdio.h>
+#include <stdlib.h>
 #include "ini_parser.h"
 
 void main()
