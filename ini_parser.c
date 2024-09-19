@@ -1,7 +1,8 @@
-#include "ini_parser.h"
+#include <stdbool.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "ini_parser.h"
 
 void idb_init_group(idb_group* pgrp, unsigned int nkeys, char* name, unsigned int namelen)
 {
@@ -10,6 +11,10 @@ void idb_init_group(idb_group* pgrp, unsigned int nkeys, char* name, unsigned in
 	if(nkeys > 0)
 	{
 		pgrp->p_keys= (idb_key*)malloc(sizeof(idb_key)*nkeys);
+	}
+	else
+	{
+		pgrp->p_keys= NULL;
 	}
 	pgrp->name= (char*)malloc((namelen+1)*sizeof(char));
 	memcpy(pgrp->name, name, namelen);
@@ -88,6 +93,10 @@ void idb_init(idb_data *pdb, unsigned int n_grp)
 	{
 		pdb->p_groups= (idb_group*) malloc(sizeof(idb_group)*n_grp);
 	}
+	else
+	{
+		pdb->p_groups= NULL;
+	}
 }
 
 void idb_reset(idb_data *pdb)
@@ -125,7 +134,7 @@ void idb_add_group(idb_data *pdb)
 	pdb->n_groups+= 1;
 }
 
-void idb_from_file(idb_data* pdb, char* path)
+bool idb_from_file(idb_data* pdb, char* path)
 {
 	FILE* pfile;
 	char buf[1280];
@@ -140,7 +149,7 @@ void idb_from_file(idb_data* pdb, char* path)
 	if(!pfile)
 	{
 		printf("Error Reading INI file\n");
-		return;
+		return(false);
 	}
 
 	while(1)
@@ -148,7 +157,7 @@ void idb_from_file(idb_data* pdb, char* path)
 		ret= fscanf(pfile, " %[^\r^\n]", buf);
 		if(ret == EOF)
 		{
-			return;
+			break;
 		}
 		len= strlen(buf);
 		for(i= len; i > 0; i--) if(buf[i] > ' ') break;
@@ -170,6 +179,7 @@ void idb_from_file(idb_data* pdb, char* path)
 			idb_set_key(pnew_key, name, val);
 		}
 	}
+	return(true);
 }
 
 char* idb_get_value(idb_data* pdb, char* group, char* key)
