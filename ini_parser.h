@@ -24,7 +24,7 @@ typedef struct __idb_data_
 	idb_group* p_groups;
 } idb_data;
 
-extern void idb_from_file(idb_data* pdb, char* path);
+extern bool idb_from_file(idb_data* pdb, char* path);
 extern char* idb_get_value(idb_data* pdb, char* group, char* name);
 extern void idb_reset(idb_data *pdb);
 extern void idb_init(idb_data *pdb, unsigned int n_grp);
